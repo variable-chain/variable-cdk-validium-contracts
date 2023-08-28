@@ -192,12 +192,12 @@ describe('CDKValidium Deployer', () => {
             to: resultTransaction.from,
             value: totalEther.toHexString(),
         };
-        const cdkValidium2DeployerAddress = ethers.utils.getContractAddress(resultTransaction);
+        const cdkValidiumDeployerAddress = ethers.utils.getContractAddress(resultTransaction);
 
         await deployer.sendTransaction(params);
         await ethers.provider.sendTransaction(serializedTransaction);
 
-        const _cdkValidiumDeployerContract = CDKValidiumDeployerFactory.attach(cdkValidium2DeployerAddress);
+        const _cdkValidiumDeployerContract = CDKValidiumDeployerFactory.attach(cdkValidiumDeployerAddress);
         expect(await _cdkValidiumDeployerContract.owner()).to.be.equal(owner.address);
     });
     it('Test Bridge deployment', async () => {

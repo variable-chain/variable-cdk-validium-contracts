@@ -18,7 +18,7 @@ async function main() {
         await hre.run(
             'verify:verify',
             {
-                address: deployParameters.cdkValidium2DeployerAddress,
+                address: deployParameters.cdkValidiumDeployerAddress,
                 constructorArguments: [
                     deployParameters.initialCDKValidiumDeployerOwner,
                 ],

@@ -72,7 +72,7 @@ A new folder will be created witth the following name `deployments/${network}_$(
 - `salt`: bytes32, Salt used in `CDKValidiumDeployer` to deploy deterministic contracts, such as the PolygonZkEVMBridge
 - `initialCDKValidiumDeployerOwner`: address, Initial owner of the `CDKValidiumDeployer`
 - `maticTokenAddress`: address, Matic token address, only if deploy on testnet can be left blank and will fullfilled by the scripts.
-- `cdkValidium2DeployerAddress`: address, Address of the `CDKValidiumDeployer`. Can be left blank, will be fullfilled automatically with the `deploy:deployer:CDKValidium:sepolia` script.
+- `cdkValidiumDeployerAddress`: address, Address of the `CDKValidiumDeployer`. Can be left blank, will be fullfilled automatically with the `deploy:deployer:CDKValidium:sepolia` script.
 
 ### Optional Parameters
 

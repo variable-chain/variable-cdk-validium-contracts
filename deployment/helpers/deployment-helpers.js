@@ -34,9 +34,9 @@ async function deployCDKValidiumDeployer(deployerAddress, signer) {
     const totalEther = gasLimit.mul(gasPrice); // 0.1 ether
 
     // Check if it's already deployed
-    const cdkValidium2DeployerAddress = ethers.utils.getContractAddress(resultTransaction);
-    if (await signer.provider.getCode(cdkValidium2DeployerAddress) !== '0x') {
-        const cdkValidiumDeployerContract = CDKValidiumDeployerFactory.attach(cdkValidium2DeployerAddress);
+    const cdkValidiumDeployerAddress = ethers.utils.getContractAddress(resultTransaction);
+    if (await signer.provider.getCode(cdkValidiumDeployerAddress) !== '0x') {
+        const cdkValidiumDeployerContract = CDKValidiumDeployerFactory.attach(cdkValidiumDeployerAddress);
         expect(await cdkValidiumDeployerContract.owner()).to.be.equal(signer.address);
         return [cdkValidiumDeployerContract, ethers.constants.AddressZero];
     }
@@ -51,7 +51,7 @@ async function deployCDKValidiumDeployer(deployerAddress, signer) {
     // Deploy supernes2Deployer
     await (await signer.provider.sendTransaction(serializedTransaction)).wait();
 
-    const cdkValidiumDeployerContract = await CDKValidiumDeployerFactory.attach(cdkValidium2DeployerAddress);
+    const cdkValidiumDeployerContract = await CDKValidiumDeployerFactory.attach(cdkValidiumDeployerAddress);
     expect(await cdkValidiumDeployerContract.owner()).to.be.equal(deployerAddress);
     return [cdkValidiumDeployerContract, resultTransaction.from];
 }

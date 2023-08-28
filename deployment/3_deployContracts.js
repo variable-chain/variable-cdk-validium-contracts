@@ -52,7 +52,7 @@ async function main() {
         'timelockAddress',
         'minDelayTimelock',
         'salt',
-        'cdkValidium2DeployerAddress',
+        'cdkValidiumDeployerAddress',
         'maticTokenAddress',
         'setupEmptyCommittee',
         'committeeTimelock',
@@ -80,7 +80,7 @@ async function main() {
         timelockAddress,
         minDelayTimelock,
         salt,
-        cdkValidium2DeployerAddress,
+        cdkValidiumDeployerAddress,
         maticTokenAddress,
         setupEmptyCommittee,
         committeeTimelock,
@@ -126,7 +126,7 @@ async function main() {
 
     // Load cdkValidium deployer
     const CDKValidiumDeployerFactory = await ethers.getContractFactory('CDKValidiumDeployer', deployer);
-    const cdkValidiumDeployerContract = CDKValidiumDeployerFactory.attach(cdkValidium2DeployerAddress);
+    const cdkValidiumDeployerContract = CDKValidiumDeployerFactory.attach(cdkValidiumDeployerAddress);
 
     // check deployer is the owner of the deployer
     if (await deployer.provider.getCode(cdkValidiumDeployerContract.address) === '0x') {

@@ -60,13 +60,13 @@ async function main() {
     const [cdkValidiumDeployerContract, keylessDeployer] = await deployCDKValidiumDeployer(initialCDKValidiumDeployerOwner, deployer);
     if (keylessDeployer === ethers.constants.AddressZero) {
         console.log('#######################\n');
-        console.log('cdkValidium2Deployer already deployed on: ', cdkValidiumDeployerContract.address);
+        console.log('cdkValidiumDeployer already deployed on: ', cdkValidiumDeployerContract.address);
     } else {
         console.log('#######################\n');
-        console.log('cdkValidium2Deployer deployed on: ', cdkValidiumDeployerContract.address);
+        console.log('cdkValidiumDeployer deployed on: ', cdkValidiumDeployerContract.address);
     }
 
-    deployParameters.cdkValidium2DeployerAddress = cdkValidiumDeployerContract.address;
+    deployParameters.cdkValidiumDeployerAddress = cdkValidiumDeployerContract.address;
     fs.writeFileSync(pathDeployParameters, JSON.stringify(deployParameters, null, 1));
 }
 
