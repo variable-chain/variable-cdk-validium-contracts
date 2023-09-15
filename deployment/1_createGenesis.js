@@ -124,10 +124,10 @@ async function main() {
             [
                 networkIDL2,
                 globalExitRootL2Address,
-                zkevmAddressL2,
+                cdkValidiumAddressL2,
             ],
         );
-        [proxyBridgeAddress] = await create2Deployment(zkEVMDeployerContract, salt, deployTransactionProxy, dataCallProxy, deployer);
+        [proxyBridgeAddress] = await create2Deployment(cdkValidiumDeployerContract, salt, deployTransactionProxy, dataCallProxy, deployer);
         finalBridgeProxyAddress = proxyBridgeAddress;
 
         // Import OZ manifest the deployed contracts, its enough to import just the proyx, the rest are imported automatically ( admin/impl)
@@ -142,7 +142,7 @@ async function main() {
         const polygonZkEVML1BridgeFactory = await ethers.getContractFactory('PolygonZkEVMBridge', deployer);
         const deployTransactionBridgeL1 = (polygonZkEVML1BridgeFactory.getDeployTransaction()).data;
         finalBridgeImplAddress = getCreate2Address(
-            zkEVMDeployerContract,
+            cdkValidiumDeployerContract,
             salt,
             deployTransactionBridgeL1,
         );
@@ -155,7 +155,7 @@ async function main() {
             proxyAdminAddress,
             initializeEmptyDataProxyL1,
         )).data;
-        finalBridgeProxyAddress = getCreate2Address(zkEVMDeployerContract, salt, deployTransactionProxyL1);
+        finalBridgeProxyAddress = getCreate2Address(cdkValidiumDeployerContract, salt, deployTransactionProxyL1);
 
         // Deploy WETH token
         const WETHzkEVMFactory = await ethers.getContractFactory('WETHzkEVM', deployer);
@@ -193,13 +193,13 @@ async function main() {
             [
                 networkIDL2,
                 globalExitRootL2Address,
-                zkevmAddressL2,
+                cdkValidiumAddressL2,
                 gasTokenAddress,
                 gasTokenNetwork,
                 WETHToken.address,
             ],
         );
-        [proxyBridgeAddress] = await create2Deployment(zkEVMDeployerContract, salt, deployTransactionProxy, dataCallProxy, deployer);
+        [proxyBridgeAddress] = await create2Deployment(cdkValidiumDeployerContract, salt, deployTransactionProxy, dataCallProxy, deployer);
 
         // Import OZ manifest the deployed contracts, its enough to import just the proyx, the rest are imported automatically ( admin/impl)
         await upgrades.forceImport(proxyBridgeAddress, polygonZkEVMBridgeFactory, 'transparent');
