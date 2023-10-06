@@ -1,7 +1,7 @@
 {
     "realVerifier": false,
-    "trustedSequencerURL": "http://cdk-validium-json-rpc:8123",
-    "networkName": "cdk-validium",
+    "trustedSequencerURL": "http://zkevm-json-rpc:8123",
+    "networkName": "zkevm-validium",
     "version":"0.0.1",
     "trustedSequencer":"0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
     "chainID": 1001,
